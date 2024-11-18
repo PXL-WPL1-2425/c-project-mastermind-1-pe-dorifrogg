@@ -109,7 +109,7 @@ namespace Mastermind
                 }
             }
         }
-
+        
         private void Timer_Tick(object sender, EventArgs e)
         {
             secondsCounter++;
@@ -313,6 +313,20 @@ namespace Mastermind
                         }
                         else colour4Label.BorderBrush = Brushes.Transparent;
                         break;
+                }
+            }
+        }
+        private void toggledebug(object sender, KeyEventArgs e)
+        {
+            if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+            {
+                if (e.Key == Key.F12)
+                {
+                    if (solutionTextBox.Visibility == Visibility.Hidden)
+                    {
+                        solutionTextBox.Visibility = Visibility.Visible;
+                    }
+                    else solutionTextBox.Visibility = Visibility.Hidden;
                 }
             }
         }
