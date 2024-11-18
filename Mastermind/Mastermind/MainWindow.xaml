@@ -49,7 +49,9 @@
         <Label x:Name="colour2Label" Content="" HorizontalAlignment="Left" Margin="82,47,0,0" VerticalAlignment="Top" Width="120" Height="96" Grid.Column="1" IsEnabled="False" BorderThickness="5px"/>
         <Label x:Name="colour3Label" Content="" HorizontalAlignment="Left" Margin="208,47,0,0" VerticalAlignment="Top" Width="120" Height="96" Grid.Column="1" IsEnabled="False" BorderThickness="5px"/>
         <Label x:Name="colour4Label" Content="" HorizontalAlignment="Left" Margin="332,47,0,0" VerticalAlignment="Top" Width="120" Height="96" Grid.Column="1" IsEnabled="False" BorderThickness="5px"/>
-        <Label x:Name="attemptLabel" Content="" HorizontalAlignment="Left" Margin="502,36,0,0" VerticalAlignment="Top" Width="120" Height="29" Grid.Column="1" IsEnabled="False"/>
+        <Label x:Name="attemptLabel" Content="Attempt: 1" HorizontalAlignment="Left" Margin="502,36,0,0" VerticalAlignment="Top" Width="120" Height="29" Grid.Column="1" IsEnabled="False" Foreground="Black"/>
+        <TextBox x:Name="solutionTextBox" Visibility="Hidden" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,406,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229" Grid.Column="1"/>
+        <Label x:Name="timeLabel" Content="Seconds: 0" HorizontalAlignment="Left" Margin="502,65,0,0" VerticalAlignment="Top" Width="120" Height="29" Grid.Column="1" IsEnabled="False" Foreground="Black"/>
 
 
     </Grid>

@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Mastermind
 {
@@ -20,12 +21,17 @@ namespace Mastermind
         string colour2;
         string colour3;
         string colour4;
-        int attemptCounter = 0;
+        int attemptCounter = 1;
+        int secondsCounter = 0;
+        private DispatcherTimer timer = new DispatcherTimer();
         public MainWindow()
         {
             InitializeComponent();
             GenerateColours(out colour1, out colour2, out colour3, out colour4);
-            Title += $": ({colour1}, {colour2}, {colour3}, {colour4})";
+            solutionTextBox.Text += $"{colour1}, {colour2}, {colour3}, {colour4}";
+            timer.Tick += Timer_Tick; //Event koppelen
+            timer.Interval = new TimeSpan(0, 0, 1); //Elke seconde
+            timer.Start(); //Timer starten
         }
 
         //METHODS
@@ -103,7 +109,19 @@ namespace Mastermind
                 }
             }
         }
-             
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            secondsCounter++;
+            if (secondsCounter % 10 == 0)
+            {
+                secondsCounter = 0;
+                attemptCounter++;
+                attemptLabel.Content = $"Attempt: {attemptCounter}";
+            }
+            timeLabel.Content = $"Seconds: {secondsCounter}";
+        }
+
         //EVENT METHODS
         private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -220,7 +238,8 @@ namespace Mastermind
         private void checkButton_Click(object sender, RoutedEventArgs e)
         {
             attemptCounter += 1;
-            attemptLabel.Content = $"Attempt {attemptCounter}";
+            attemptLabel.Content = $"Attempt: {attemptCounter}";
+            secondsCounter = 0;
             List<string> colourList = new List<string>();
             colourList.Add(colour1);
             colourList.Add(colour2);
