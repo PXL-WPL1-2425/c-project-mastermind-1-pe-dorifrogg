@@ -29,7 +29,7 @@ namespace Mastermind
             InitializeComponent();
             GenerateColours(out colour1, out colour2, out colour3, out colour4);
             solutionTextBox.Text += $"{colour1}, {colour2}, {colour3}, {colour4}";
-            timer.Tick += Timer_Tick; //Event koppelen
+            timer.Tick += Countdown; //Event koppelen
             timer.Interval = new TimeSpan(0, 0, 1); //Elke seconde
             timer.Start(); //Timer starten
         }
@@ -110,7 +110,7 @@ namespace Mastermind
             }
         }
         
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Countdown(object sender, EventArgs e)
         {
             secondsCounter++;
             if (secondsCounter % 10 == 0)
@@ -316,7 +316,7 @@ namespace Mastermind
                 }
             }
         }
-        private void toggledebug(object sender, KeyEventArgs e)
+        private void ToggleDebug(object sender, KeyEventArgs e)
         {
             if (e.KeyboardDevice.Modifiers == ModifierKeys.Control)
             {
